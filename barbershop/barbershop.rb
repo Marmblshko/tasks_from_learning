@@ -12,7 +12,7 @@ post "/" do
   @title = 'thanks'
   @message = "Dear #{@username}, we'll be waiting for you at #{@date}"
 
-  f = File.open "users.txt", "a"
+  f = File.open "./barbershop//public/users.txt", "a"
   f.write "User: #{@username}, Phone: #{@phone}, Date: #{@date}\n"
   f.close
 
@@ -26,9 +26,9 @@ end
 post "/admin" do
   @admin_pass = params[:admin_pass]
 
-  if @admin_pass == ''
+  if @admin_pass == '123'
     @title = 'thanks'
-    @message = send_file 'users.txt'
+    @message = send_file "./barbershop//public/users.txt"
     erb :message
   else
     @title = 'no'
